@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>2% z Dani</title>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="funs.js"></script>
+	<script type="text/javascript" src="dve_percenta2012.js"></script>
+	<script type="text/javascript" src="dve_percenta2011.js"></script>
+	<script type="text/javascript" src="dve_percenta2010.js"></script>
+	<script type="text/javascript" src="dve_percenta2009.js"></script>
+
+	<style type="text/css">
+		
+		.tooltip{
+			margin:7px;
+			z-index: 3;
+			padding:9px;
+			background-color:black;
+			position: absolute;
+			border:2px solid yellow;
+			font-size: 24px;
+			color: #FFF;
+		}
+
+		.maptile:hover
+		{
+			background-color:black !important;
+			border:solid !important;
+			border-color:yellow !important;
+			z-index: 2; 
+		}
+
+		#mainmap
+		{
+			position:absolute;
+			top:50px;
+			left:5px;
+		}
+
+
+	</style>
+
+
+</head>
+<body>
+
+	<select class="target">
+		<option value="2012">2012</option>
+		<option value="2011">2011</option>
+		<option value="2010">2010</option>
+		<option value="2009">2009</option>
+	</select> 
+
+	<div id="mainmap"></div>
+
+	<script type="text/javascript">
+		var datasets = new Array();
+		datasets['2012'] = dataset2012;
+		datasets['2011'] = dataset2011;
+		datasets['2010'] = dataset2010;
+		datasets['2009'] = dataset2009;
+
+		createMap(datasets[$( ".target" ).val()]);
+		
+		$( ".target" ).change(function() {
+			var selected = $( ".target" ).val();
+			reCreateMap(datasets[selected]);
+		});
+		
+	</script>
+</body>
+</html>
